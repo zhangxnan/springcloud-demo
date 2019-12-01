@@ -21,6 +21,7 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="taobao-sdk-java-auto_1479188381469-20191101" level="project" />
+    <orderEntry type="library" name="Maven: cn.hutool:hutool-all:5.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:2.0.0.RELEASE" level="project" />

@@ -1,7 +1,6 @@
 package com.deepexi.springcloud.demo.processor;
 
 import com.deepexi.springcloud.demo.constants.ClubUrls;
-import com.deepexi.springcloud.demo.controller.BadmintonController;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +57,6 @@ public class BadmintonHomePageProcessor implements PageProcessor {
             return;
         }
 
-        System.out.println(page.getHtml().toString());
         getInfoAndSendMessage(page);
 
     }

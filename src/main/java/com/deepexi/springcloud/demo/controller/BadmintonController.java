@@ -34,7 +34,7 @@ public class BadmintonController {
     @GetMapping("/new")
     public Result newMan(@RequestParam String aName,
                          @RequestParam String aKey){
-        if (!checkKey(aKey)){
+        if (checkKey(aKey)){
             return new Result(false, "秘钥错误", "-1");
         }
         clobService.sendClobDetailToDingDing(aName);
@@ -47,7 +47,7 @@ public class BadmintonController {
                            @RequestParam Integer aTime,
                            @RequestParam Integer aNumber,
                            @RequestParam String aKey){
-        if (!checkKey(aKey)){
+        if (checkKey(aKey)){
             return new Result(false, "秘钥错误", "-1");
         }
 
@@ -73,7 +73,7 @@ public class BadmintonController {
     @GetMapping("/recently")
     public Result recently(@RequestParam Integer aNumber,
                            @RequestParam String aKey){
-        if (!checkKey(aKey)){
+        if (checkKey(aKey)){
             return new Result(false, "秘钥错误", "-1");
         }
 
@@ -97,7 +97,7 @@ public class BadmintonController {
 
         log.info(" id: "+aId+" times: "+aTimes+" time: "+aTime + "start ... ");
 
-        if (!checkKey(aKey)){
+        if (checkKey(aKey)){
             return new Result(false, "秘钥错误", "-1");
         }
 
@@ -133,12 +133,12 @@ public class BadmintonController {
     }
 
 
-
-    public boolean checkKey(String key){
-        if (!PW.equals(key)){
-            return false;
-        }
-        return true;
+    /**
+     * @param key 密匙
+     * @return 是否密匙正确
+     */
+    private boolean checkKey(String key){
+        return !PW.equals(key);
     }
 
 
