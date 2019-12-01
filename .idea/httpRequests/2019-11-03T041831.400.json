@@ -1,0 +1,7 @@
+{
+  "timestamp": "2019-11-03T08:18:31.416+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Required String parameter 'id' is not present",
+  "path": "/demo/send"
+}
