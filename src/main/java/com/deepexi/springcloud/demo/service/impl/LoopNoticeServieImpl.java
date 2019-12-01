@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -50,6 +51,7 @@ public class LoopNoticeServieImpl implements LoopNoticeServie {
             }
 
             BadmintonHomePageProcessor.getPageAndSendMessage(2);
+            log.info("执行完毕 .... now: " + LocalDateTime.now());
 
         }
 
