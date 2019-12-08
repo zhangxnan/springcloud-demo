@@ -2,10 +2,11 @@ package com.keep.service.impl;
 
 import com.keep.domain.CluRunRecord;
 import com.keep.mapper.CluRunRecordMapper;
-import com.keep.service.CluRunRecordService;
 import com.keep.service.ClubRunRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p> TODO </p>
@@ -22,5 +23,10 @@ public class ClubRunRecordServiceImpl implements ClubRunRecordService {
     @Override
     public void saveCluRunRecord(CluRunRecord record) {
         mapper.saveCluRunRecord(record);
+    }
+
+    @Override
+    public List<CluRunRecord> getAllRunList(String startTime) {
+        return mapper.getAllRunList(startTime);
     }
 }

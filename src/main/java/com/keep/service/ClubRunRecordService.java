@@ -2,6 +2,8 @@ package com.keep.service;
 
 import com.keep.domain.CluRunRecord;
 
+import java.util.List;
+
 /**
  * <p> 活动记录 </p>
  *
@@ -16,4 +18,9 @@ public interface ClubRunRecordService {
      */
     void saveCluRunRecord(CluRunRecord record);
 
+    /**
+     * 获取全部运动记录
+     * @return 运动记录
+     */
+    List<CluRunRecord> getAllRunList(String startTime);
 }

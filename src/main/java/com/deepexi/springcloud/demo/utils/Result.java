@@ -30,6 +30,14 @@ public class Result {
         return result;
     }
 
+    public static  Result getFailResult(String remark){
+        Result result =  new Result();
+        result.setErrorMsg("失败");
+        result.fields.put("结果", remark);
+        return result;
+    }
+
+
     public Result(Boolean success, String errorMsg, String errorCode) {
         this.success = success;
         this.errorMsg = errorMsg;

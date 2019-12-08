@@ -27,7 +27,7 @@ public class LoopNoticeServieImpl implements LoopNoticeServie {
 
     @Override
     public void loopNotice() {
-        Week dayOfWeek = DateUtil.dayOfWeekEnum(new Date());
+
 
         while (true){
             try {
@@ -36,7 +36,7 @@ public class LoopNoticeServieImpl implements LoopNoticeServie {
 
             }
             Date now = new Date();
-
+            Week dayOfWeek = DateUtil.dayOfWeekEnum(now);
 
             if (DateUtil.hour(now, true) != 9){
                 continue;

@@ -3,7 +3,6 @@ package com.keep.service.impl;
 import com.keep.domain.ClubUser;
 import com.keep.mapper.CuldUserMapper;
 import com.keep.service.CludUserService;
-import com.keep.service.CuldUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +21,11 @@ public class CludUserServiceImpl implements CludUserService {
 
     @Override
     public Long createUser(ClubUser user) {
+        Long userId = mapper.getUserCountByDingId(user.getDingId());
+        if (userId != null){
+            return userId;
+        }
+
         mapper.saveUser(user);
         return user.getUserId();
     }

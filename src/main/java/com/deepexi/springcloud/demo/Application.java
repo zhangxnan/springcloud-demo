@@ -7,6 +7,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.Map;
+
 /**
  * Created by donh on 2018/11/5.
  * EnableDiscoveryClient 用于启动服务发现功能
@@ -20,12 +22,15 @@ public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 
-        LoopNoticeServie loopNoticeServie = context.getBean(LoopNoticeServie.class);
+        Map<String, LoopNoticeServie> beansOfType = context.getBeansOfType(LoopNoticeServie.class);
 
-        System.out.println(loopNoticeServie);
+        System.out.println(beansOfType);
 
-        new Thread(() -> {
-            loopNoticeServie.loopNotice();
-        }).start();
+        for (LoopNoticeServie noticeServie : beansOfType.values()){
+            new Thread(() -> {
+                noticeServie.loopNotice();
+            }).start();
+        }
+
     }
 }
