@@ -13,30 +13,12 @@ import org.apache.commons.lang3.StringUtils;
  * @date 2019-11-02 20:59
  */
 public class RunDingDingMessage {
-    private static final String DING_DING_URL = "https://oapi.dingtalk.com/robot/send?access_token=2ae8eb2c1b2685865d42a6e8949c5d1b9bbaa3d66aa8ffb9a25477dcd070625a";
-
-    private static final String YU_DINGDING_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=4e349bf573fa125a5e60cc96549c345e9b215e43c30efa4d3e9a2866a5a28345";
-
-    public void sendMessageByDefault(String message) throws ApiException {
-        if (filter(message)){
-            send(message, DING_DING_URL, null);
-        }
-    }
+    private static final String DING_DING_URL = "https://oapi.dingtalk.com/robot/send?access_token=fe8064c630f522dd73691bb118acf4b82657809e61bf4ff943999c600d824b17";
 
     public void sendMessage(String message) throws ApiException {
-        if (filter(message)){
-            send(message, YU_DINGDING_WEB_HOOK, null);
-        }
+            send(message, DING_DING_URL, null);
     }
 
-    private boolean filter(String message){
-        if (message.contains("被取消")){
-            return false;
-        }else if (message.contains("已结束")){
-            return false;
-        }
-        return true;
-    }
 
 
     /**

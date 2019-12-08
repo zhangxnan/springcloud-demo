@@ -1,10 +1,9 @@
-package com.deepexi.member.config;
+package com.config;
 
 import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +22,7 @@ import javax.sql.DataSource;
  * <br>==========================
  */
 @Configuration
-@MapperScan("com.deepexi.member.mapper")
+@MapperScan("com.keep.mapper")
 public class DataSourceConfig {
 
     @Bean(name = "dataSource", destroyMethod = "close")

@@ -6,6 +6,9 @@ import cn.hutool.core.date.Week;
 import com.deepexi.springcloud.demo.service.LoopNoticeServie;
 import com.keep.domain.CluRunRecord;
 import com.keep.service.ClubRunRecordService;
+import com.keep.utils.RunDingDingMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,6 +28,7 @@ import java.util.stream.Collectors;
 @Service
 public class RunLoopNoticeServieImpl implements LoopNoticeServie {
 
+    private static final Logger log = LoggerFactory.getLogger(RunLoopNoticeServieImpl.class);
 
     @Resource
     private ClubRunRecordService runRecordService;
@@ -91,6 +95,14 @@ public class RunLoopNoticeServieImpl implements LoopNoticeServie {
                 }
                 builder.append("\n --------------------------------- \n");
             }
+
+            RunDingDingMessage message = new RunDingDingMessage();
+            try {
+                message.sendMessage(builder.toString());
+            }catch (Exception e){
+                log.error("发送钉钉消息失败", e);
+            }
         }
+
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.keep.mapper.CluRunRecordMapper">
+
+
+    <insert id="saveCluRunRecord" parameterType="com.keep.domain.CluRunRecord">
+        INSERT INTO club_run_record ( user_id, duration, distance, record_time )
+        VALUES (#{userId}, #{duration}, #{distance}, now())
+    </insert>
+
+    <!-- 获取全部运动记录 -->
+    <select id="getAllRunList" resultType="com.keep.domain.CluRunRecord">
+        SELECT
+            r.distance,
+            r.duration,
+            r.record_time as recordTime,
+            r.user_id as userId,
+            u.nick_name as nickName
+        FROM
+            club_run_record r
+            LEFT JOIN club_user u
+        WHERE
+            r.user_id = u.user_id
+        AND r.record_time >= #{startTime}
+    </select>
+
+
+</mapper>
