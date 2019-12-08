@@ -24,7 +24,7 @@ public class Application {
 
         Map<String, LoopNoticeServie> beansOfType = context.getBeansOfType(LoopNoticeServie.class);
 
-        System.out.println(beansOfType);
+        System.out.println(beansOfType.size());
 
         for (LoopNoticeServie noticeServie : beansOfType.values()){
             new Thread(() -> {
