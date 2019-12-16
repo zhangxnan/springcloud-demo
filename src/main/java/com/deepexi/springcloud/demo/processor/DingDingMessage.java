@@ -1,11 +1,15 @@
 package com.deepexi.springcloud.demo.processor;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.Week;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.taobao.api.ApiException;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Date;
 
 /**
  * <p> 发送钉钉消息 </p>
@@ -18,6 +22,11 @@ public class DingDingMessage {
 
     private static final String YU_DINGDING_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=4e349bf573fa125a5e60cc96549c345e9b215e43c30efa4d3e9a2866a5a28345";
 
+    /**
+     * 千与千寻 钉钉群
+     */
+    private static final String QIAN_XUN_DING_URL  = "https://oapi.dingtalk.com/robot/send?access_token=37eb72fa5d122898e67f9e0585e10b0579091337cff4074050193752285b798c";
+
     public void sendMessageByDefault(String message) throws ApiException {
         if (filter(message)){
             send(message, DING_DING_URL, null);
@@ -27,8 +36,31 @@ public class DingDingMessage {
     public void sendMessage(String message) throws ApiException {
         if (filter(message)){
             send(message, YU_DINGDING_WEB_HOOK, null);
+            if (isSendTime()){
+                send(message, QIAN_XUN_DING_URL, null);
+            }
         }
     }
+
+
+    private boolean isSendTime(){
+
+        Date now = new Date();
+        Week dayOfWeek = DateUtil.dayOfWeekEnum(now);
+
+        if (dayOfWeek.equals(Week.TUESDAY) || dayOfWeek.equals(Week.FRIDAY)){
+            if (DateUtil.hour(now, true) == 9
+                && DateUtil.minute(now) == 30){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+
 
     private boolean filter(String message){
         if (message.contains("被取消")){
