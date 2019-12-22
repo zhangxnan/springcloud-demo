@@ -35,10 +35,7 @@ public class DingDingMessage {
 
     public void sendMessage(String message) throws ApiException {
         if (filter(message)){
-            send(message, YU_DINGDING_WEB_HOOK, null);
-            if (isSendTime()){
-                send(message, QIAN_XUN_DING_URL, null);
-            }
+            send(message, QIAN_XUN_DING_URL, null);
         }
     }
 

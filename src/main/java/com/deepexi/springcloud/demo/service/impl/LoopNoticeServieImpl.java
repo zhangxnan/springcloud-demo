@@ -50,6 +50,14 @@ public class LoopNoticeServieImpl implements LoopNoticeServie {
                 continue;
             }
 
+            if (dayOfWeek.equals(Week.MONDAY)){
+                continue;
+            }
+
+            if (dayOfWeek.equals(Week.WEDNESDAY)){
+                continue;
+            }
+
             BadmintonHomePageProcessor.getPageAndSendMessage(2);
             log.info("执行完毕 .... now: " + LocalDateTime.now());
 
