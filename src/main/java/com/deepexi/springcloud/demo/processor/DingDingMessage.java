@@ -25,7 +25,7 @@ public class DingDingMessage {
     /**
      * 千与千寻 钉钉群
      */
-    private static final String QIAN_XUN_DING_URL  = "https://oapi.dingtalk.com/robot/send?access_token=37eb72fa5d122898e67f9e0585e10b0579091337cff4074050193752285b798c";
+    private static final String QIAN_XUN_DING_URL  = "https://oapi.dingtalk.com/robot/send?access_token=4e349bf573fa125a5e60cc96549c345e9b215e43c30efa4d3e9a2866a5a28345";
 
     public void sendMessageByDefault(String message) throws ApiException {
         if (filter(message)){

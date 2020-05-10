@@ -12,4 +12,16 @@ public interface ClobService {
      * @param name 接受消息的用户
      */
     void sendClobDetailToDingDing(String name);
+
+    /**
+     * 发送积分
+     * @param aName
+     */
+    void sendscore(String aName);
+
+    /**
+     * 发送全部积分
+     * @param name
+     */
+    void sendAllScore(String name);
 }

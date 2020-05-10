@@ -41,6 +41,38 @@ public class BadmintonController {
         return Result.getSuccessResult();
     }
 
+    /**
+     * 个人积分
+     * @param aName
+     * @param aKey
+     * @return
+     */
+    @GetMapping("/score")
+    public Result score(@RequestParam String aName,
+                         @RequestParam String aKey){
+        if (checkKey(aKey)){
+            return new Result(false, "秘钥错误", "-1");
+        }
+        clobService.sendscore(aName);
+        return Result.getSuccessResult();
+    }
+
+    /**
+     * 所有人积分
+     * @param aName
+     * @param aKey
+     * @return
+     */
+    @GetMapping("/score")
+    public Result allScore(@RequestParam String aName,
+                        @RequestParam String aKey){
+        if (checkKey(aKey)){
+            return new Result(false, "秘钥错误", "-1");
+        }
+        clobService.sendAllScore(aName);
+        return Result.getSuccessResult();
+    }
+
 
     @GetMapping("/loopCall")
     public Result loopCall(@RequestParam Integer aTimes,
