@@ -63,7 +63,7 @@ public class BadmintonController {
      * @param aKey
      * @return
      */
-    @GetMapping("/score")
+    @GetMapping("/allScore")
     public Result allScore(@RequestParam String aName,
                         @RequestParam String aKey){
         if (checkKey(aKey)){
